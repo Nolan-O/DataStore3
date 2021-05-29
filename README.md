@@ -12,12 +12,12 @@ It follows some specific design goals:
 * Data to be saved cannot be out of date
 
 Covers the basics:
-[x] Autosaves
-[x] Binds to close
-[x] Built-in caching of data
-[x] Uses a master key
-[x] Table validation
-[x] Temporary non-saving stores if a `get` fails
+- [x] Autosaves
+- [x] Binds to close
+- [x] Built-in caching of data
+- [x] Uses a master key
+- [x] Table validation
+- [x] Temporary non-saving stores if a `get` fails
 
 **WARNING**: The size of the stored table is not checked to be less than the current maximum size. The resulting DataStore error will be logged to the server console, but goes unhandled! Handling the error transparently would add a lot of complexity to the design of the module, which, in *most* use cases, is never necessary.
 
