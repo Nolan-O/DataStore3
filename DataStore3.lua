@@ -191,7 +191,7 @@ function DS3.NewDataBinding(StoreName: string, MasterKey: string, Bindings: Bind
 		end
 
 		--Verifying that we can serialize is trivial
-		if DS3Obj.Serialize == nil then
+		if typeof(DS3Obj.Serialize) ~= "function" then
 			error(string.format(ERR_NOT_DS3_OBJ, StoreName, MasterKey, key))
 		end
 
@@ -352,6 +352,8 @@ local function _GetAsync(self: DS3Binding)
 		if success then
 			DS3Obj.StoreRetrieved = true
 		else
+			--This data could now be corrupted, so don't save.
+			self._dontSave = true
 			warn(string.format(ERR_DESERIALIZE, self.masterKey, key))
 		end
 	end
